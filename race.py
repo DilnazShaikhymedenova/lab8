@@ -7,7 +7,7 @@ import time
 pygame.init()
 
 # Setting up FPS
-FPS = 60
+FPS = 60 #(how many frame in seconds)
 FramePerSec = pygame.time.Clock()
 
 # Creating colors
@@ -32,7 +32,7 @@ game_over = font.render("Game Over", True, BLACK)
 background = pygame.image.load("AnimatedStreet.png")
 
 # Create a white screen
-DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+DISPLAYS = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Game")
 
 
@@ -123,22 +123,21 @@ while True:
             pygame.quit()
             sys.exit()
 
-    DISPLAYSURF.blit(background, (0, 0))
+    DISPLAYS.blit(background, (0, 0))
     scores = font_small.render(str(SCORE), True, BLACK)
-    DISPLAYSURF.blit(scores, (10, 10))
+    DISPLAYS.blit(scores, (10, 10))
 
     # Moves and Re-draws all Sprites
     for entity in all_sprites:
-        DISPLAYSURF.blit(entity.image, entity.rect)
+        DISPLAYS.blit(entity.image, entity.rect)
         entity.move()
 
     # To be run if collision occurs between Player and Enemy
     if pygame.sprite.spritecollideany(P1, enemies):
-        pygame.mixer.Sound("crash.wav").play()
         time.sleep(0.5)
 
-        DISPLAYSURF.fill(RED)
-        DISPLAYSURF.blit(game_over, (30, 250))
+        DISPLAYS.fill(RED)
+        DISPLAYS.blit(game_over, (30, 250))
 
         pygame.display.update()
         for entity in all_sprites:
@@ -150,7 +149,7 @@ while True:
     coins_collected_text = font_small.render("Coins: " + str(COINS_COLLECTED), True, BLACK)
     coins_collected_rect = coins_collected_text.get_rect()
     coins_collected_rect.topright = (SCREEN_WIDTH - 10, 10)
-    DISPLAYSURF.blit(coins_collected_text, coins_collected_rect)
+    DISPLAYS.blit(coins_collected_text, coins_collected_rect)
 
     pygame.display.update()
     FramePerSec.tick(FPS)

@@ -7,8 +7,8 @@ pygame.init()
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
 CELL_SIZE = 20
-SNAKE_COLOR = (0, 255, 0)
-FOOD_COLOR = (255, 0, 0)
+SNAKE_COLOR = (255, 0, 0)
+FOOD_COLOR = (255, 255, 0)
 BACKGROUND_COLOR = (0, 0, 0)
 
 # Directions
@@ -27,9 +27,9 @@ speed = 10
 
 # Game window
 window = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-pygame.display.set_caption('Snake Game')
+pygame.display.set_caption('Snake Game') #for title
 
-# Game clock
+# Clock for controlling the speed
 clock = pygame.time.Clock()
 
 # Functions
